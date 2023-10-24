@@ -14,6 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import { Grid, Paper } from "@mui/material";
 
 interface Props {
   /**
@@ -70,7 +71,7 @@ export default function DrawerAppBar(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
       <CssBaseline />
       <AppBar component="nav">
         <Toolbar>
@@ -121,9 +122,53 @@ export default function DrawerAppBar(props: Props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3, mt: 6, width: "100vw" }}>
+      <Box component="main" sx={{ p: 3, mt: 6, width: "100%" }}>
         {children}
       </Box>
+      <Paper
+        style={{
+          width: "100%",
+          marginTop: 8,
+        }}
+        elevation={5}
+      >
+        <Grid container spacing={2} sx={{ mt: 2 }}>
+          <Grid xs={12} md={4} sx={{ padding: "8px 24px" }}>
+            <List>
+              <ListItem>
+                <ListItemText primary="Home" />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary="About" />
+              </ListItem>
+            </List>
+          </Grid>
+          <Grid xs={12} md={4}>
+            <List>
+              <ListItem>
+                <ListItemText primary="Our team" />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary="Contact Us" />
+              </ListItem>
+            </List>
+          </Grid>
+          <Grid xs={12} md={4}>
+            <List>
+              <ListItem>
+                <ListItemText primary="+213656848888" />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary="Rue G, Les crêtes, Hydra" />
+              </ListItem>
+            </List>
+          </Grid>
+        </Grid>
+        <Divider />
+        <Typography sx={{ textAlign: "center", padding: "8px 0" }}>
+          © 2023 - Made with ❤️ By BrainerX
+        </Typography>
+      </Paper>
     </Box>
   );
 }
